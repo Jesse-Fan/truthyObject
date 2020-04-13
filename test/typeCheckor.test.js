@@ -1,4 +1,4 @@
-const isComplexType = require('../src/index.js')
+const typeCheckor = require('../src/typeCheckor.js')
 const utils = require ('../utils/index.js')
 
 const {
@@ -33,12 +33,15 @@ const testObj = [
   sybTypeData,
 ]
 
-const filterNotValidateList = testObj.filter(it => isComplexType(it) !== 'object')
+const typeRes = testObj
+  .map(data => ({
+    data,
+    checkRes: typeCheckor(data)
+  }))
+  .filter(resIt => !resIt.checkRes)
+  .map(resIt => resIt.data)
 
-if(filterNotValidateList.length) {
-  console.log('test failed: ', filterNotValidateList)
-}
+if(typeRes.length) return console.log('failed res: ', typeRes)
 
-if(!filterNotValidateList.length) {
-  console.log('test success ')
-}
+console.log('test success')
+

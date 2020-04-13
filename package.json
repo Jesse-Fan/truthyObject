@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "test": "nodemon ./test/index.js --watch",
+    "test:typeCheckor": "nodemon ./test/typeCheckor.test.js --watch",
     "dev": "nodemon ./src/index.js --watch"
   },
   "dependencies": {

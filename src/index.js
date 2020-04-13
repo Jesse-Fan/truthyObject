@@ -1,40 +1,21 @@
-const R = require('ramda')
-
-const complexDataTypeList = [
-  'object',
-]
-
-const pickDataType = R.prop('type')
-const pickDataValue = R.prop('value')
-
-const transformDataToDataTypeStr = data => ({
-  value: data,
-  type: typeof data,
-})
-
-const errorHandler= type => {
-  console.error(`type Error: ${type} is not handle type of Object`)
+const obj = {
+  a: {
+    aa: {
+      aa: 1
+    }
+  },
+  b: ''
 }
 
-const onError = R.compose(
-  errorHandler,
-  pickDataType,
-)
+const R = reuqire('ramda')
+const typeCheckor = require('./typeCheckor')
+const propsList = R.keys
 
-const isValidateType = R.compose(
-  R.includes(R.__, complexDataTypeList),
-  pickDataType,
+R.compose(
+  propsList,
 )
+const truthyObject = data => {
+  propsList(data)
+}
 
-const predFn = R.ifElse(
-  isValidateType,
-  R.prop('value'),
-  onError,
-)
-
-const isComplexType = R.compose(
-  predFn,
-  transformDataToDataTypeStr,
-)
-
-module.exports = isComplexType
+module.exports = truthyObject
