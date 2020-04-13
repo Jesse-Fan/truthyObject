@@ -1,0 +1,19 @@
+{
+  "name": "truthyComplex",
+  "version": "1.0.0",
+  "description": "filter Complex structure falsity",
+  "main": "index.js",
+  "author": "Jesse Fan",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "test": "nodemon ./test/index.js --watch",
+    "dev": "nodemon ./src/index.js --watch"
+  },
+  "dependencies": {
+    "ramda": "^0.27.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
